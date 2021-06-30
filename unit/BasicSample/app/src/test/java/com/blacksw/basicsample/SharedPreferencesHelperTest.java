@@ -84,6 +84,7 @@ public class SharedPreferencesHelperTest {
                 mMockSharedPreferencesHelper.getPersonalInfo();
 
         // 개인 정보 값이 일치하는지 확인한다
+        // assertThat() 메소드에선 실제 액션 처리 후 결과 값과 예상 결과 값을 비교하여 테스트를 진행한다
         assertThat("SharedPreferences에 저장한 SharedPreferencesEntry.name 값이 제대로 저장되어 있는지 확인",
                 savedSharedPreferencesEntry.getName(),
                 is(mSharedPreferencesEntry.getName()));
@@ -100,6 +101,7 @@ public class SharedPreferencesHelperTest {
      */
     private SharedPreferencesHelper createMockSharedPreferencesHelper() {
         // SharedPreferences에서 유저 값들을 성공적으로 읽어오는 결과를 모킹한다.
+        // when()과 같은 메소드 호출이 발샐할 경우에 thenReturn() 값으로 결과를 대신 반환
         when(mMockSharedPreferences.getString(eq(SharedPreferencesHelper.KEY_NAME), anyString()))
                 .thenReturn(mSharedPreferencesEntry.getName());
         when(mMockSharedPreferences.getString(eq(SharedPreferencesHelper.KEY_EMAIL), anyString()))
